@@ -27,9 +27,7 @@ jobs:
             github/snake/github-contribution-grid-snake-dark.svg?palette=github-dark
 
       - name: Commit snake animation
-        uses: EndBug/add-and-commit@v9
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          author_name: github-actions[bot]
-          author_email: 41898282+github-actions[bot]@users.noreply.github.com
-          message: "chore: update snake contribution graph"
-          add: "github/snake/*.svg"
+          commit_message: "chore: update snake contribution graph"
+          file_pattern: github/snake/*.svg
