@@ -18,7 +18,7 @@
 
 ## 👋 About Me
 
-I'm **Harthik Royal Mallichetty**, an AI Engineer based in **Richardson, TX**, actively building toward full-time **AI Engineer** roles.
+I'm **Harthik Mallichetty**, an Data & AI Engineer based in **Dallas, TX**, actively building toward full-time **Data & AI Engineer** roles.
 
 - 🎓 **MS Business Analytics and AI**, UT Dallas — **May 2026** · GPA **3.81** · **Scholar With Distinction**
 - 🛂 **F-1 OPT** — work authorized in the United States
