@@ -2,10 +2,10 @@
   <img src="https://komarev.com/ghpvc/?username=harthikrm&color=00d4ff&style=flat-square&label=Profile+views" alt="Profile views" />
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&height=120&section=header&text=Harthik%20Royal%20Mallichetty&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI%20Engineer%20%C2%B7%20Richardson%2C%20TX&descAlignY=62&descSize=16&descAlign=50" alt="Header" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&height=120&section=header&text=Harthik%20Mallichetty&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Data%20and%20AI%20Engineer%20%C2%B7%20Dallas%2C%20TX&descAlignY=62&descSize=16&descAlign=50" alt="Header" />
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&pause=1000&color=00D4FF&center=true&vCenter=true&width=620&lines=AI+Engineer+building+in+public;Fine-tuning+LLMs+on+real+problems;RAG+pipelines+%7C+LangGraph+agents+%7C+GCP;MS+Business+Analytics+%26+AI+%E2%80%94+UT+Dallas" alt="Typing animation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&pause=1000&color=00D4FF&center=true&vCenter=true&width=620&lines=Data+and+AI+Engineer+building+in+public;Fine-tuning+LLMs+on+real+problems;RAG+pipelines+%7C+LangGraph+agents+%7C+GCP;MS+Business+Analytics+%26+AI+%E2%80%94+UT+Dallas" alt="Typing animation" />
 </p>
 
 <picture>
@@ -110,19 +110,19 @@ I build production AI systems — fine-tuned LLMs, RAG pipelines, and agentic la
 ## 🤝 Let's Connect
 
 <p align="center">
-  <a href="https://linkedin.com/in/harthikrm">
-    <img src="https://img.shields.io/badge/LinkedIn-harthikrm-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  <a href="https://linkedin.com/in/harthikmallichetty/">
+    <img src="https://img.shields.io/badge/LinkedIn-harthikmallichetty-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   <a href="https://harthik.dev">
     <img src="https://img.shields.io/badge/Portfolio-harthik.dev-00d4ff?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" />
   </a>
-  <a href="mailto:harthikmallichetty@gmail.com">
-    <img src="https://img.shields.io/badge/Email-harthikmallichetty@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  <a href="mailto:hrmallichetty@gmail.com">
+    <img src="https://img.shields.io/badge/Email-hrmallichetty@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
   </a>
 </p>
 
 <p align="center">
-  <em>Open to AI Engineer opportunities · Richardson, TX · F-1 OPT work authorized</em>
+  <em>Open to Data & AI Engineer opportunities · Open to relocation · United States</em>
 </p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&height=100&section=footer&text=Thanks%20for%20visiting!&fontSize=28&fontColor=00d4ff&animation=fadeIn" alt="Footer" />
