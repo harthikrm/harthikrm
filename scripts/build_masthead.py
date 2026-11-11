@@ -25,12 +25,13 @@ from fontTools.varLib.instancer import instantiateVariableFont
 FONTS = Path(sys.argv[1]).expanduser()
 OUT = Path(__file__).resolve().parent.parent / "assets"
 
-W, H = 900, 160
+W, H = 900, 190
 
 THEMES = {
-    # GitHub's own foreground and border tokens, so the type sits in the page.
-    "light": {"ink": "#1f2328", "muted": "#59636e", "rule": "#d1d9e0", "accent": "#2b45ff"},
-    "dark": {"ink": "#f0f6fc", "muted": "#9198a1", "rule": "#3d444d", "accent": "#7c8cff"},
+    # GitHub's own foreground tokens; the name fades from ink into the accent
+    # and on to a violet, over a faint glow of the accent.
+    "light": {"ink": "#1f2328", "muted": "#59636e", "accent": "#2b45ff", "violet": "#9b5cff", "glow": 0.14},
+    "dark": {"ink": "#f0f6fc", "muted": "#9198a1", "accent": "#7c8cff", "violet": "#c08cff", "glow": 0.22},
 }
 
 
@@ -66,22 +67,34 @@ class Face:
 sans = Face("Geist[wght].ttf", 600)
 mono = Face("GeistMono[wght].ttf", 400)
 
-role_d, _ = mono.run("DATA & AI ENGINEER", 17, tracking=2.4)
-city_d, city_w = mono.run("DALLAS, TX", 17, tracking=2.4)
-name_d, name_w = sans.run("Harthik Mallichetty", 82, tracking=-3.2)
-stop_d, _ = sans.run(".", 82)
+name_d, name_w = sans.run("Harthik Mallichetty", 88, tracking=-3.6)
+# Mono subline, large enough to stay legible when GitHub scales the image to a phone.
+LABELS = ("DATA & AI ENGINEER", "DALLAS, TX", "BUILDING ROOM")
+labels = [mono.run(t, 19, tracking=2.4) for t in LABELS]
+GAP = 30
 
 
 def render(theme):
     c = THEMES[theme]
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Harthik Mallichetty — Data and AI engineer, Dallas, Texas">
-<g fill="{c['muted']}">
-<path transform="translate(2 28)" d="{role_d}"/>
-<path transform="translate({W - 2 - city_w:.1f} 28)" d="{city_d}"/>
-</g>
-<path fill="{c['ink']}" transform="translate(-2 114)" d="{name_d}"/>
-<path fill="{c['accent']}" transform="translate({name_w - 1:.1f} 114)" d="{stop_d}"/>
-<path d="M1 150.5H{W - 1}" stroke="{c['rule']}" stroke-width="1.5"/>
+    x, sub, dots = 2.0, [], []
+    for i, (d, w) in enumerate(labels):
+        if i:
+            dots.append(f'<circle cx="{x - GAP / 2:.1f}" cy="161" r="2.6"/>')
+        sub.append(f'<path transform="translate({x:.1f} 168)" d="{d}"/>')
+        x += w + GAP
+    # Gradients and the glow use plain gradients rather than filters, which
+    # some renderers clip to a hard-edged box.
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Harthik Mallichetty — Data and AI engineer, Dallas, Texas. Building Room.">
+<defs>
+<linearGradient id="name" x1="0" x2="{name_w:.0f}" gradientUnits="userSpaceOnUse">
+<stop offset=".35" stop-color="{c['ink']}"/><stop offset=".78" stop-color="{c['accent']}"/><stop offset="1" stop-color="{c['violet']}"/>
+</linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="{c['accent']}" stop-opacity="{c['glow']}"/><stop offset="1" stop-color="{c['accent']}" stop-opacity="0"/></radialGradient>
+</defs>
+<ellipse cx="660" cy="70" rx="240" ry="80" fill="url(#glow)"/>
+<path fill="url(#name)" transform="translate(-2 100)" d="{name_d}"/>
+<g fill="{c['muted']}">{"".join(sub)}</g>
+<g fill="{c['accent']}">{"".join(dots)}</g>
 </svg>
 """
 
