@@ -77,28 +77,20 @@ main = f"M214 {RULE_Y} H{W - 14}"
 
 def render(theme):
     c = THEMES[theme]
-    strand_paths = "".join(f'<path class="s" pathLength="1" d="{d}"/>' for d in strands)
+    # Deliberately static: browsers pause animation in <img> SVGs (hidden
+    # tabs, Safari), and a paused draw-on would leave the rule invisible.
+    strand_paths = "".join(f'<path d="{d}"/>' for d in strands)
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Harthik Mallichetty — Data and AI engineer, Dallas, Texas">
-<style>
-.s,.m{{fill:none;stroke:{c['ink']};stroke-linecap:round}}
-.s{{stroke-width:1.5;stroke-opacity:.55}}
-.m{{stroke-width:2.5}}
-@media (prefers-reduced-motion:no-preference){{
-.s,.m{{stroke-dasharray:1;animation:draw 1.1s cubic-bezier(.6,0,.2,1) .15s backwards}}
-.m{{animation-duration:1.4s;animation-delay:.6s}}
-.d{{animation:fade .4s ease-out 1.9s backwards}}
-}}
-@keyframes draw{{from{{stroke-dashoffset:1}}to{{stroke-dashoffset:0}}}}
-@keyframes fade{{from{{opacity:0}}to{{opacity:1}}}}
-</style>
 <g fill="{c['muted']}">
 <path transform="translate(2 34)" d="{role_d}"/>
 <path transform="translate({W - 2 - city_w:.1f} 34)" d="{city_d}"/>
 </g>
 <path fill="{c['ink']}" transform="translate(-3 134)" d="{name_d}"/>
-{strand_paths}
-<path class="m" pathLength="1" d="{main}"/>
-<circle class="d" cx="{W - 8}" cy="{RULE_Y}" r="5.5" fill="{c['accent']}"/>
+<g fill="none" stroke="{c['ink']}" stroke-linecap="round">
+<g stroke-width="1.5" stroke-opacity=".55">{strand_paths}</g>
+<path stroke-width="2.5" d="{main}"/>
+</g>
+<circle cx="{W - 8}" cy="{RULE_Y}" r="5.5" fill="{c['accent']}"/>
 </svg>
 """
 
