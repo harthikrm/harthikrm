@@ -54,7 +54,7 @@ PLATES = [
         "id": "mylonite", "fig": "mylonite", "title": "Mylonite",
         "meta": "NOV 2026 · RESEARCH · SOLO", "tag": "PREPRINT",
         "line": "Finds races through Redis or Valkey state by controlling the order commands reach the store.",
-        "stats": [("1", "MEDIAN RUNS TO BUG, WITH SOURCE"), ("764 / 97", "STRONGEST NON-AI BASELINE"), ("41.8–59.9 s", "TIME TO BUG; SEARCH 1.0–6.5 S")],
+        "stats": [("1", "MEDIAN RUNS TO BUG, WITH SOURCE"), ("764 / 97", "STRONGEST NON-AI BASELINE"), ("41.8–59.9 s", "MEDIAN TIME; SEARCH 1.0–6.5S")],
         "caption": "FIG.02 — COMMAND ORDERINGS UNDER TEST",
         "href": f"{GH}/mylonite",
         "body": "A delay-only proxy controls the order commands reach the store, Meta's Muse Spark proposes which requests to race, and plain code decides what counts as a bug; every report must replay 20 times out of 20. In a pre-registered evaluation on two held-out bugs, the model with the service's source needed a median of **1** execution for each, against **764** and **97** for the strongest non-AI baseline. Even with the source it was slower and more expensive than systematic search (median 41.8 s and 59.9 s against 1.0–6.5 s), because one execution costs about 9 ms. Without the source it was not better than the conventional baselines on any metric. The paper reports all of it.",
@@ -163,10 +163,10 @@ def svg(w, h, body, label):
 def header(c, no, word, right, phone):
     W = 600 if phone else 900
     k = 1.4 if phone else 1
-    s = path(mono, f"/{no}", 13 * k, 0, 26 * k, c["accent"], tracking=1.5)[0]
+    s = path(mono, f"/{no}", (13 if phone else 14) * k, 0, 26 * k, c["accent"], tracking=1.5)[0]
     s += path(sans, word, 34 * k, 44 * k, 34 * k, c["ink"], tracking=-1)[0]
     if not phone:
-        s += path(mono, right, 12, W, 26, c["muted"], tracking=1.5, anchor="end")[0]
+        s += path(mono, right, 13.5, W, 26, c["muted"], tracking=1.4, anchor="end")[0]
     H = 60 * k
     s += f'<path d="M0 {H - 5.5:.1f}H{W}" stroke="{c["rule"]}"/>'
     return svg(W, H, s, f"{no} — {word}")
@@ -204,8 +204,8 @@ def plate(c, p, F, phone):
     else:
         W, k, tw = 900, 1, 420
         f, fh = figure(p["fig"], c, F, 460, 0, 440)
-        s = f + path(mono, p["caption"], 10.5, 460, fh + 30, c["muted"], tracking=1.3)[0]
-        y, ms, ts, ls_label = 22, 12, 10.5, 10.5
+        s = f + path(mono, p["caption"], 12, 460, fh + 30, c["muted"], tracking=1.2)[0]
+        y, ms, ts, ls_label = 22, 13.5, 11.5, 11.5
     s += path(mono, p["meta"], ms, 0, y, c["muted"], tracking=1.4)[0]
     y += ms * 3
     s += tag(0, y, p["tag"], c, ts, accent=True)[0]
@@ -214,7 +214,7 @@ def plate(c, p, F, phone):
     for line in balanced(sans, p["title"], size, tw, tracking=-size * 0.035):
         s += path(sans, line, size, -1, y, c["ink"], tracking=-size * 0.035)[0]
         y += size * 1.04
-    ls = 17 * (1.3 if phone else 1)
+    ls = 22 if phone else 18
     y += 4
     for line in wrap(text, p["line"], ls, tw - 10):
         s += path(text, line, ls, 0, y, c["muted"])[0]
@@ -234,7 +234,7 @@ def row(c, r, F, phone):
     thumb = "fig" in r and not phone
     boxed = r.get("boxed", True)
     k = 1.45 if phone else 1
-    s = path(mono, r["no"], 18 if phone else 12, 0, 40 * k, c["muted"], tracking=1.3)[0]
+    s = path(mono, r["no"], 18 if phone else 13.5, 0, 40 * k, c["muted"], tracking=1.3)[0]
     x = 64 * k
     if thumb:
         f, _ = figure(r["fig"], c, F, 64, 12, 128)
@@ -254,11 +254,11 @@ def row(c, r, F, phone):
         else:
             H = 40 * k + 32 + 26 * len(lines)
     else:
-        s += path(mono, r["meta"], 12, x, 70, c["muted"], tracking=1.3)[0]
+        s += path(mono, r["meta"], 13.5, x, 72, c["muted"], tracking=1.2)[0]
         if boxed:
-            s += tag(W, 40, r["tag"], c, 11.5, anchor="end")[0]
+            s += tag(W, 40, r["tag"], c, 12.5, anchor="end")[0]
         else:
-            s += path(mono, r["tag"], 12, W, 40, c["muted"], tracking=1.3, anchor="end")[0]
+            s += path(mono, r["tag"], 13.5, W, 40, c["muted"], tracking=1.2, anchor="end")[0]
         H = 106 if thumb else 94
     s += f'<path d="M0 {H - 0.5:.1f}H{W}" stroke="{c["rule"]}"/>'
     return svg(W, H, s, r["alt"])
@@ -267,14 +267,26 @@ def row(c, r, F, phone):
 # ── README ────────────────────────────────────────────────────────
 
 
+def sources(a):
+    """<source> lines for asset stem `a`, light/dark x desktop/phone.
+
+    GitHub's <themed-picture> rewrites the whole media query of any source
+    containing "prefers-color-scheme: light|dark" (with that space) so it
+    follows the GitHub theme, which would drop a width condition. The phone
+    sources leave the space out, so GitHub leaves them alone: they apply only
+    to narrow screens and follow the OS scheme. The desktop pair is themed by GitHub.
+    """
+    return (f'  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="{a}-dark-phone.svg">\n'
+            f'  <source media="(max-width: 600px)" srcset="{a}-light-phone.svg">\n'
+            f'  <source media="(prefers-color-scheme: dark)" srcset="{a}-dark.svg">\n'
+            f'  <source media="(prefers-color-scheme: light)" srcset="{a}-light.svg">\n')
+
+
 def picture(name, alt, href, width="100%"):
     a = f"assets/body/{name}"
     # <a> alone on its line opens an HTML block; inline, GitHub parses it as
     # a paragraph and pulls the <source> elements out of the <picture>.
-    return (f'<a href="{href}">\n<picture>\n'
-            f'  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="{a}-dark-phone.svg">\n'
-            f'  <source media="(max-width: 600px)" srcset="{a}-light-phone.svg">\n'
-            f'  <source media="(prefers-color-scheme: dark)" srcset="{a}-dark.svg">\n'
+    return (f'<a href="{href}">\n<picture>\n{sources(a)}'
             f'  <img src="{a}-light.svg" width="{width}" alt="{escape(alt)}">\n'
             f"</picture>\n</a>")
 
@@ -305,7 +317,8 @@ def readme_body():
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for theme, c in THEMES.items():
-        F = figures(mono, c)
+        # Plates show the figure at 440/640 on desktop; lift its smallest labels.
+        F = figures(mono, c, min_label=15)
         F_phone = figures(mono, c, min_label=18)
         F_thumb = figures(mono, c, labels=False)
         for phone in (False, True):
@@ -320,6 +333,7 @@ def main():
                     (OUT / f"row-{r['id']}-{sfx}.svg").write_text(row(c, r, F_thumb, phone))
     readme = ROOT / "README.md"
     src = readme.read_text()
+    src = re.sub(r"(<picture>\n)(?:  <source[^\n]*masthead[^\n]*\n)+", lambda m: m.group(1) + sources("assets/masthead"), src, count=1)
     new = re.sub(r"(<!-- body:start -->\n).*?(<!-- body:end -->)", lambda m: m.group(1) + readme_body() + "\n" + m.group(2), src, flags=re.S)
     readme.write_text(new)
     print(f"{len(list(OUT.glob('*.svg')))} assets")
