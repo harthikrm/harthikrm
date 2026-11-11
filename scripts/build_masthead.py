@@ -13,14 +13,9 @@ first argument:
 """
 
 import sys
-from io import BytesIO
 from pathlib import Path
 
-import uharfbuzz as hb
-from fontTools.pens.svgPathPen import SVGPathPen
-from fontTools.pens.transformPen import TransformPen
-from fontTools.ttLib import TTFont
-from fontTools.varLib.instancer import instantiateVariableFont
+from outline import Face
 
 FONTS = Path(sys.argv[1]).expanduser()
 OUT = Path(__file__).resolve().parent.parent / "assets"
@@ -35,37 +30,8 @@ THEMES = {
 }
 
 
-class Face:
-    def __init__(self, filename, weight):
-        tt = TTFont(FONTS / filename)
-        instantiateVariableFont(tt, {"wght": weight}, inplace=True)
-        buf = BytesIO()
-        tt.save(buf)
-        self.tt = TTFont(BytesIO(buf.getvalue()))
-        self.glyphs = self.tt.getGlyphSet()
-        self.upem = self.tt["head"].unitsPerEm
-        self.hb = hb.Font(hb.Face(hb.Blob(buf.getvalue())))
-
-    def run(self, text, size, tracking=0.0):
-        """Shaped outline for `text`; returns (path data, advance width)."""
-        buf = hb.Buffer()
-        buf.add_str(text)
-        buf.guess_segment_properties()
-        hb.shape(self.hb, buf, {"kern": True, "liga": True})
-        scale = size / self.upem
-        order = self.tt.getGlyphOrder()
-        pen = SVGPathPen(self.glyphs, ntos=lambda v: f"{v:.1f}".rstrip("0").rstrip("."))
-        x = 0.0
-        for info, pos in zip(buf.glyph_infos, buf.glyph_positions):
-            name = order[info.codepoint]
-            t = TransformPen(pen, (scale, 0, 0, -scale, x + pos.x_offset * scale, -pos.y_offset * scale))
-            self.glyphs[name].draw(t)
-            x += pos.x_advance * scale + tracking
-        return pen.getCommands(), x - tracking
-
-
-sans = Face("Geist[wght].ttf", 600)
-mono = Face("GeistMono[wght].ttf", 400)
+sans = Face(FONTS, "Geist[wght].ttf", 600)
+mono = Face(FONTS, "GeistMono[wght].ttf", 400)
 
 name_d, name_w = sans.run("Harthik Mallichetty", 88, tracking=-3.6)
 # Mono subline, large enough to stay legible when GitHub scales the image to a phone.

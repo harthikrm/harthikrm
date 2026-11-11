@@ -10,43 +10,136 @@ I build AI systems end to end, from ingestion jobs and warehouses to evaluations
 
 <br>
 
-### <samp>01</samp>&ensp;Room
+<!-- body:start -->
+<a href="https://www.harthik.dev"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/h01-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/h01-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/h01-dark.svg">
+  <img src="assets/body/h01-light.svg" width="100%" alt="01 — Selected work">
+</picture></a>
 
-<samp><sub>FOUNDER&ensp;·&ensp;SINCE 2026&ensp;·&ensp;PRIVATE EARLY ACCESS</sub></samp>
+<a href="https://joinaroom.app"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/plate-room-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/plate-room-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/plate-room-dark.svg">
+  <img src="assets/body/plate-room-light.svg" width="100%" alt="Room — GPT, Claude and Gemini answer side by side, each briefed from one confirmed project memory.">
+</picture></a>
 
-GPT, Claude and Gemini answer side by side in one project, each reading from a shared project memory. Decisions and constraints are proposed from the conversation, only the ones you confirm are kept, and each links back to the message it came from.
+Decisions and constraints are proposed from the conversation, only the ones you confirm are kept, and each links back to the message it came from. Up to three models stream in parallel, with failures isolated per model.
 
 <samp>Next.js · TypeScript · PostgreSQL · Supabase · OpenRouter&ensp;→&ensp;<a href="https://joinaroom.app">joinaroom.app</a></samp>
 
-### <samp>02</samp>&ensp;Signal
+<br>
 
-<samp><sub>FINANCIAL RESEARCH&ensp;·&ensp;2026&ensp;·&ensp;END TO END</sub></samp>
+<a href="https://github.com/harthikrm/mylonite"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/plate-mylonite-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/plate-mylonite-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/plate-mylonite-dark.svg">
+  <img src="assets/body/plate-mylonite-light.svg" width="100%" alt="Mylonite — Finds races that happen through Redis or Valkey state by controlling the order commands reach the store.">
+</picture></a>
 
-Ask about a company; get an answer cited to its filings. Airflow pulls SEC XBRL facts, filing text and prices for 70 companies, dbt models them through tested staging and mart layers, and filings are embedded into pgvector. On top sit a cited RAG chat and a LangGraph agent that plans, calls six data tools, checks its answer and replans.
+A delay-only proxy controls the order commands reach the store, Meta's Muse Spark proposes which requests to race, and plain code decides what counts as a bug; every report must replay 20 times out of 20. In a pre-registered evaluation on two held-out bugs, the model with the service's source needed a median of **1** execution for each, against **764** and **97** for the strongest non-AI baseline. Without the source it was no better than search, and it lost on wall-clock time and dollars, because executions are cheap. The paper reports all of it.
 
-<samp>Python · Airflow · dbt · pgvector · LangGraph · FastAPI · GCP&ensp;→&ensp;<a href="https://github.com/harthikrm/signal">source</a></samp>
-
-### <samp>03</samp>&ensp;Mylonite
-
-<samp><sub>RESEARCH&ensp;·&ensp;NOV 2026&ensp;·&ensp;PREPRINT</sub></samp>
-
-A test harness for races that happen through Redis or Valkey state, not in memory. A delay-only proxy controls the order commands reach the store, a language model proposes which requests to race, and plain code decides what counts as a bug; every report must replay 20 times out of 20. In a pre-registered evaluation on two held-out bugs, the model, given the service's source, needed a median of **1** execution for each, against **764** and **97** for the strongest non-AI baseline. Without the source it was no better than search, and it lost on wall-clock time and dollars, because executions are cheap. The paper reports all of it.
-
-<samp>Python · Valkey · RESP · 129 tests&ensp;→&ensp;<a href="https://github.com/harthikrm/mylonite">source</a> · <a href="https://www.harthik.dev/papers/mylonite_fewer_executions_more_seconds.pdf">paper</a></samp>
+<samp>Python · Valkey · RESP · Docker&ensp;→&ensp;<a href="https://github.com/harthikrm/mylonite">source</a> · <a href="https://www.harthik.dev/papers/mylonite_fewer_executions_more_seconds.pdf">paper</a></samp>
 
 <br>
 
-<samp><sub>ALSO</sub></samp>
+<a href="https://www.harthik.dev/papers/measure_the_harness_first.pdf"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/plate-harness-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/plate-harness-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/plate-harness-dark.svg">
+  <img src="assets/body/plate-harness-light.svg" width="100%" alt="Measure the Harness First — What can be learned about a configuration-only Gemma 4 coding agent before tuning it.">
+</picture></a>
 
-**[Code Sentinel](https://github.com/harthikrm/code-sentinel)**&ensp;—&ensp;QLoRA fine-tune of Mistral-7B-Instruct on 143K code-review pairs, trained on an H100 on Vertex AI, with a GitHub Actions bot that sent each diff hunk to the model for review.<br>
-**[Let the Solver Choose Its Data](https://github.com/harthikrm/arc-prize-2026-paper)**&ensp;—&ensp;ARC Prize 2026 Paper Track submission. Selects synthetic tasks for continued training of the NVARC solver by that solver's own likelihood, and argues from its runs that held-out loss was the wrong signal for choosing a checkpoint.<br>
-**[Quant Risk Desk](https://github.com/harthikrm/quant-risk-desk)**&ensp;—&ensp;Airflow-orchestrated ingest into Postgres, with dbt models computing VaR, CVaR, drawdowns and macro-regime overlays across 11 sectors.
+The competition ships an agent as configuration only, run by a fixed harness on one quantized 31B Gemma 4 model. As shipped, the public dev environment could grade just 16 of 129 tasks with their own reference patches; three environment fixes raised that to 92. A BM25 index put a gold file in the top five for 70% of tasks, while the harness's embedding search resolved 2 of 129. With everything else fixed, the per-task tool-call budget, not the prompt, moved the public leaderboard.
 
-<samp><sub>WRITING</sub></samp>
+<samp>Gemma 4 · vLLM · SWE-bench-style tasks · BM25&ensp;→&ensp;<a href="https://www.harthik.dev/papers/measure_the_harness_first.pdf">paper</a></samp>
 
-[When feedback backfires](https://medium.com/@hrmallichetty/when-feedback-backfires-can-better-feedback-teach-ai-agents-to-game-the-system-5a03d05d9262): can better feedback teach AI agents to game their graders?&ensp;<sub>Sep 2026</sub><br>
-[From code review to ARC-AGI-2](https://medium.com/@hrmallichetty/from-code-review-to-arc-agi-2-reusing-the-same-ml-muscle-on-a-harder-reasoning-problem-a4be66501d3b): reusing the same ML muscle on a harder reasoning problem.&ensp;<sub>Oct 2026</sub>
+<br>
 
-<samp><sub>BEFORE THIS</sub></samp>
+<a href="https://www.harthik.dev"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/h02-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/h02-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/h02-dark.svg">
+  <img src="assets/body/h02-light.svg" width="100%" alt="02 — Index">
+</picture></a>
 
-Associate data engineer at Prolifics, building SQL pipelines over 250K+ engineering records and a TensorFlow sprint-risk service behind a Flask API. Before that, a data-analyst internship at HeiDigi. MS in Business Analytics & AI, UT Dallas, 2026; B.Tech, GITAM.
+<a href="https://github.com/harthikrm/signal"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-signal-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-signal-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-signal-dark.svg">
+  <img src="assets/body/row-signal-light.svg" width="100%" alt="Signal: ask about a company and get an answer cited to its filings, built on Airflow, dbt, pgvector and LangGraph.">
+</picture></a>
+<a href="https://github.com/harthikrm/arc-prize-2026-paper"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-arc-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-arc-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-arc-dark.svg">
+  <img src="assets/body/row-arc-light.svg" width="100%" alt="Let the Solver Choose Its Data: ARC Prize 2026 paper on selecting synthetic tasks by the NVARC solver&#x27;s own likelihood.">
+</picture></a>
+<a href="https://github.com/harthikrm/code-sentinel"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-sentinel-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-sentinel-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-sentinel-dark.svg">
+  <img src="assets/body/row-sentinel-light.svg" width="100%" alt="Code Sentinel: QLoRA fine-tune of Mistral-7B-Instruct on 143K code-review pairs, with a GitHub Actions review bot.">
+</picture></a>
+<a href="https://github.com/harthikrm/quant-risk-desk"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-quant-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-quant-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-quant-dark.svg">
+  <img src="assets/body/row-quant-light.svg" width="100%" alt="Quant Risk Desk: Airflow ingest into Postgres with dbt models computing VaR, CVaR and drawdowns across 11 sectors.">
+</picture></a>
+
+<a href="https://www.harthik.dev"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/h03-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/h03-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/h03-dark.svg">
+  <img src="assets/body/h03-light.svg" width="100%" alt="03 — Writing">
+</picture></a>
+
+<a href="https://medium.com/@hrmallichetty/when-feedback-backfires-can-better-feedback-teach-ai-agents-to-game-the-system-5a03d05d9262"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-feedback-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-feedback-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-feedback-dark.svg">
+  <img src="assets/body/row-feedback-light.svg" width="100%" alt="When feedback backfires: can better feedback teach AI agents to game their graders? Medium, September 2026.">
+</picture></a>
+<a href="https://medium.com/@hrmallichetty/from-code-review-to-arc-agi-2-reusing-the-same-ml-muscle-on-a-harder-reasoning-problem-a4be66501d3b"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-arc-essay-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-arc-essay-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-arc-essay-dark.svg">
+  <img src="assets/body/row-arc-essay-light.svg" width="100%" alt="From code review to ARC-AGI-2: reusing the same ML muscle on a harder reasoning problem. Medium, October 2026.">
+</picture></a>
+
+<a href="https://www.harthik.dev"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/h04-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/h04-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/h04-dark.svg">
+  <img src="assets/body/h04-light.svg" width="100%" alt="04 — Experience">
+</picture></a>
+
+<a href="https://www.harthik.dev/#experience"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-prolifics-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-prolifics-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-prolifics-dark.svg">
+  <img src="assets/body/row-prolifics-light.svg" width="100%" alt="Prolifics, associate data engineer (joined as an intern), 2023 to 2024.">
+</picture></a>
+<a href="https://www.harthik.dev/#experience"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-heidigi-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-heidigi-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-heidigi-dark.svg">
+  <img src="assets/body/row-heidigi-light.svg" width="100%" alt="HeiDigi, data analyst intern, 2022.">
+</picture></a>
+<a href="https://www.harthik.dev/#experience"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-utd-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-utd-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-utd-dark.svg">
+  <img src="assets/body/row-utd-light.svg" width="100%" alt="University of Texas at Dallas, MS in Business Analytics and Artificial Intelligence, Scholar With Distinction, 2026.">
+</picture></a>
+<a href="https://www.harthik.dev/#experience"><picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-gitam-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/body/row-gitam-light-phone.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-gitam-dark.svg">
+  <img src="assets/body/row-gitam-light.svg" width="100%" alt="GITAM University, B.Tech in Computer Science and Business Systems, 2024.">
+</picture></a>
+
+<samp><sub><a href="https://www.harthik.dev/Harthik_Mallichetty_Resume.pdf">Résumé (PDF)</a>&ensp;·&ensp;Also: McKinsey.org Forward Program · Anthropic Claude 101 and AI Fluency · IBM Data Analytics internship</sub></samp>
+<!-- body:end -->
