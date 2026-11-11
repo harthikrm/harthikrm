@@ -6,7 +6,7 @@
 
 I build AI systems that hold up outside the notebook — the data pipelines underneath, the models and evaluations in the middle, and the product on top. Right now that means [Room](https://joinaroom.app), a workspace where several models work from one shared project memory.
 
-<samp>Dallas, TX&ensp;·&ensp;<a href="https://www.harthik.dev">harthik.dev</a>&ensp;·&ensp;<a href="https://www.linkedin.com/in/harthikmallichetty">LinkedIn</a>&ensp;·&ensp;<a href="https://medium.com/@hrmallichetty">Writing</a>&ensp;·&ensp;<a href="mailto:hrmallichetty@gmail.com">Email</a></samp>
+<samp>Dallas, TX&nbsp;·&ensp;<a href="https://www.harthik.dev">harthik.dev</a>&nbsp;·&ensp;<a href="https://www.linkedin.com/in/harthikmallichetty">LinkedIn</a>&nbsp;·&ensp;<a href="https://medium.com/@hrmallichetty">Writing</a>&nbsp;·&ensp;<a href="mailto:hrmallichetty@gmail.com">Email</a></samp>
 
 <br>
 
