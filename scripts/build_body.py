@@ -39,7 +39,7 @@ GH = "https://github.com/harthikrm"
 
 PLATES = [
     {
-        "id": "room", "no": "01", "fig": "room", "title": "Room",
+        "id": "room", "fig": "room", "title": "Room",
         "meta": "MAY 2026 — PRESENT · FOUNDER", "tag": "PRIVATE EARLY ACCESS",
         "line": "GPT, Claude and Gemini answer side by side, each briefed from one confirmed project memory.",
         # As published on harthik.dev; the app's repository is private.
@@ -51,24 +51,24 @@ PLATES = [
         "links": [("joinaroom.app", "https://joinaroom.app")],
     },
     {
-        "id": "mylonite", "no": "02", "fig": "mylonite", "title": "Mylonite",
+        "id": "mylonite", "fig": "mylonite", "title": "Mylonite",
         "meta": "NOV 2026 · RESEARCH · SOLO", "tag": "PREPRINT",
-        "line": "Finds races that happen through Redis or Valkey state by controlling the order commands reach the store.",
-        "stats": [("1", "MEDIAN EXECUTIONS TO BUG, WITH SOURCE"), ("764 / 97", "STRONGEST NON-AI BASELINE"), ("41.8–59.9 s", "MEDIAN TIME TO BUG; SEARCH 1.0–6.5 S")],
+        "line": "Finds races through Redis or Valkey state by controlling the order commands reach the store.",
+        "stats": [("1", "MEDIAN RUNS TO BUG, WITH SOURCE"), ("764 / 97", "STRONGEST NON-AI BASELINE"), ("41.8–59.9 s", "TIME TO BUG; SEARCH 1.0–6.5 S")],
         "caption": "FIG.02 — COMMAND ORDERINGS UNDER TEST",
         "href": f"{GH}/mylonite",
-        "body": "A delay-only proxy controls the order commands reach the store, Meta's Muse Spark proposes which requests to race, and plain code decides what counts as a bug; every report must replay 20 times out of 20. In a pre-registered evaluation on two held-out bugs, the model with the service's source needed a median of **1** execution for each, against **764** and **97** for the strongest non-AI baseline. Without the source it was no better than search, and it lost on wall-clock time and dollars, because executions are cheap. The paper reports all of it.",
+        "body": "A delay-only proxy controls the order commands reach the store, Meta's Muse Spark proposes which requests to race, and plain code decides what counts as a bug; every report must replay 20 times out of 20. In a pre-registered evaluation on two held-out bugs, the model with the service's source needed a median of **1** execution for each, against **764** and **97** for the strongest non-AI baseline. Even with the source it was slower and more expensive than systematic search (median 41.8 s and 59.9 s against 1.0–6.5 s), because one execution costs about 9 ms. Without the source it was not better than the conventional baselines on any metric. The paper reports all of it.",
         "stack": "Python · Valkey · RESP · Docker",
         "links": [("source", f"{GH}/mylonite"), ("paper", f"{PAPERS}/mylonite_fewer_executions_more_seconds.pdf")],
     },
     {
-        "id": "harness", "no": "03", "fig": "gemma", "title": "Measure the Harness First",
+        "id": "harness", "fig": "gemma", "title": "Measure the Harness First",
         "meta": "NOV 2026 · PAPER · WITH SRIRAM KATRAPALLY", "tag": "GEMMA 4 DEVELOPER AGENT",
         "line": "What can be learned about a configuration-only Gemma 4 coding agent before tuning it.",
         "stats": [("16 → 92", "OF 129 TASKS GRADABLE AFTER FIXES"), ("70%", "GOLD FILE IN BM25 TOP FIVE"), ("−42%", "TOOL CALLS, TWO-AGENT SETUP")],
         "caption": "FIG.03 — AGENT LOOP UNDER A TOOL-CALL BUDGET",
         "href": f"{PAPERS}/measure_the_harness_first.pdf",
-        "body": "The competition ships an agent as configuration only, run by a fixed harness on one quantized 31B Gemma 4 model. As shipped, the public dev environment could grade just 16 of 129 tasks with their own reference patches; three environment fixes raised that to 92. A BM25 index put a gold file in the top five for 70% of tasks, while the harness's embedding search resolved 2 of 129. With everything else fixed, the per-task tool-call budget, not the prompt, moved the public leaderboard.",
+        "body": "Entrants ship an agent as configuration only, which the competition's fixed harness runs on one quantized 31B Gemma 4 model. As shipped, the public dev environment could grade just 16 of 129 tasks with their own reference patches; three environment fixes raised that to 92. A BM25 index put a gold file in the top five for 70% of tasks, while the harness's embedding search returned any result on only 2 of 129, because queries had to match a fully qualified name exactly. With everything else fixed, the per-task tool-call budget, not the prompt, moved the public leaderboard.",
         "stack": "Gemma 4 · vLLM · SWE-bench-style tasks · BM25",
         "links": [("paper", f"{PAPERS}/measure_the_harness_first.pdf")],
     },
@@ -86,22 +86,22 @@ INDEX = [
 ]
 
 WRITING = [
-    {"id": "feedback", "title": "When feedback backfires", "meta": "MEDIUM · REWARD HACKING & EVALUATION", "tag": "SEP 2026",
+    {"id": "feedback", "title": "When feedback backfires", "meta": "MEDIUM · REWARD HACKING & EVALUATION", "tag": "SEP 2026", "boxed": False,
      "href": "https://medium.com/@hrmallichetty/when-feedback-backfires-can-better-feedback-teach-ai-agents-to-game-the-system-5a03d05d9262",
      "alt": "When feedback backfires: can better feedback teach AI agents to game their graders? Medium, September 2026."},
-    {"id": "arc-essay", "title": "From code review to ARC-AGI-2", "meta": "MEDIUM · FINE-TUNING → REASONING", "tag": "OCT 2026",
+    {"id": "arc-essay", "title": "From code review to ARC-AGI-2", "meta": "MEDIUM · FINE-TUNING → REASONING", "tag": "OCT 2026", "boxed": False,
      "href": "https://medium.com/@hrmallichetty/from-code-review-to-arc-agi-2-reusing-the-same-ml-muscle-on-a-harder-reasoning-problem-a4be66501d3b",
      "alt": "From code review to ARC-AGI-2: reusing the same ML muscle on a harder reasoning problem. Medium, October 2026."},
 ]
 
 EXPERIENCE = [
-    {"id": "prolifics", "title": "Prolifics", "meta": "ASSOCIATE DATA ENGINEER · FROM INTERN", "tag": "2023 — 2024",
+    {"id": "prolifics", "title": "Prolifics", "meta": "ASSOCIATE DATA ENGINEER · FROM INTERN", "tag": "2023 — 2024", "boxed": False,
      "alt": "Prolifics, associate data engineer (joined as an intern), 2023 to 2024."},
-    {"id": "heidigi", "title": "HeiDigi", "meta": "DATA ANALYST INTERN", "tag": "2022",
+    {"id": "heidigi", "title": "HeiDigi", "meta": "DATA ANALYST INTERN", "tag": "2022", "boxed": False,
      "alt": "HeiDigi, data analyst intern, 2022."},
-    {"id": "utd", "title": "UT Dallas", "meta": "MS, BUSINESS ANALYTICS & AI · DISTINCTION", "tag": "2026",
+    {"id": "utd", "title": "UT Dallas", "meta": "MS, BUSINESS ANALYTICS & AI · DISTINCTION", "tag": "2026", "boxed": False,
      "alt": "University of Texas at Dallas, MS in Business Analytics and Artificial Intelligence, Scholar With Distinction, 2026."},
-    {"id": "gitam", "title": "GITAM", "meta": "B.TECH, COMPUTER SCIENCE & BUSINESS SYSTEMS", "tag": "2024",
+    {"id": "gitam", "title": "GITAM", "meta": "B.TECH, COMPUTER SCIENCE & BUSINESS SYSTEMS", "tag": "2024", "boxed": False,
      "alt": "GITAM University, B.Tech in Computer Science and Business Systems, 2024."},
 ]
 for e in EXPERIENCE:
@@ -172,39 +172,46 @@ def header(c, no, word, right, phone):
     return svg(W, H, s, f"{no} — {word}")
 
 
-def stats_row(c, stats, x0, y, width, k):
-    """Big numbers with mono labels that wrap inside their column."""
-    s, col = "", width / len(stats)
+def balanced(face, s, size, width, tracking=0.0):
+    """One line if it fits, else the two-line split whose longer line is shortest."""
+    if face.run(s, size, tracking)[1] <= width:
+        return [s]
+    words = s.split()
+    splits = [(" ".join(words[:i]), " ".join(words[i:])) for i in range(1, len(words))]
+    return list(min(splits, key=lambda ab: max(face.run(t, size, tracking)[1] for t in ab)))
+
+
+def stats_row(c, stats, x0, y, width, k, ls):
+    """Big numbers with mono labels that wrap inside their column; returns (svg, depth)."""
+    s, col, depth = "", width / len(stats), 0
     for i, (v, label) in enumerate(stats):
         x = x0 + i * col
         s += path(sans, v, 26 * k, x, y, c["ink"], tracking=-0.6)[0]
-        ls = 10.5 * min(k, 1.3)
-        for j, line in enumerate(wrap(mono, label, ls, col - 16, tracking=1.0)):
+        lines = wrap(mono, label, ls, col - 16, tracking=1.0)
+        for j, line in enumerate(lines):
             s += path(mono, line, ls, x, y + 22 * k + j * ls * 1.45, c["muted"], tracking=1.0)[0]
-    return s
+        depth = max(depth, 22 * k + (len(lines) - 1) * ls * 1.45)
+    return s, depth
 
 
 def plate(c, p, F, phone):
+    # The FIG caption numbers the plate; the section header carries the /0N.
     if phone:
-        W, k = 600, 1.45
+        W, k, tw = 600, 1.45, 600
         f, fh = figure(p["fig"], c, F, 0, 0, W)
-        s = f + path(mono, p["caption"], 12, 0, fh + 26, c["muted"], tracking=1.2)[0]
-        y = fh + 72
-        tx = 0
-        tw = W
+        s = f + path(mono, p["caption"], 18, 0, fh + 34, c["muted"], tracking=1.2)[0]
+        y, ms, ts, ls_label = fh + 84, 19, 17, 17
     else:
-        W, k = 900, 1
+        W, k, tw = 900, 1, 420
         f, fh = figure(p["fig"], c, F, 460, 0, 440)
-        s = f + path(mono, p["caption"], 10.5, 460, fh + 22, c["muted"], tracking=1.3)[0]
-        y = 22
-        tw = 420
-    s += path(mono, f"/{p['no']}", 12 * min(k, 1.25), 0, y, c["accent"], tracking=1.4)[0]
-    s += path(mono, p["meta"], 12 * min(k, 1.25), 40 * min(k, 1.25), y, c["muted"], tracking=1.4)[0]
-    y += 36 * min(k, 1.25)
-    s += tag(0, y, p["tag"], c, 10.5 * min(k, 1.3), accent=True)[0]
-    size = (52 if len(p["title"]) < 12 else 38) * (1.15 if phone else 1)
+        s = f + path(mono, p["caption"], 10.5, 460, fh + 30, c["muted"], tracking=1.3)[0]
+        y, ms, ts, ls_label = 22, 12, 10.5, 10.5
+    s += path(mono, p["meta"], ms, 0, y, c["muted"], tracking=1.4)[0]
+    y += ms * 3
+    s += tag(0, y, p["tag"], c, ts, accent=True)[0]
+    size = 46 * (1.15 if phone else 1)
     y += 18 + size * 0.95
-    for line in wrap(sans, p["title"], size, tw, tracking=-size * 0.035):
+    for line in balanced(sans, p["title"], size, tw, tracking=-size * 0.035):
         s += path(sans, line, size, -1, y, c["ink"], tracking=-size * 0.035)[0]
         y += size * 1.04
     ls = 17 * (1.3 if phone else 1)
@@ -212,33 +219,46 @@ def plate(c, p, F, phone):
     for line in wrap(text, p["line"], ls, tw - 10):
         s += path(text, line, ls, 0, y, c["muted"])[0]
         y += ls * 1.45
-    sy = max(y + 20, 0 if phone else 248)
+    # On desktop the stats rule continues the figure's bottom edge.
+    sy = y + 16 if phone else max(y + 16, fh)
     s += f'<path d="M0 {sy + 0.5:.1f}H{tw}" stroke="{c["rule"]}"/>'
-    s += stats_row(c, p["stats"], 0, sy + 30 * k, tw, k)
-    H = sy + (30 + 22 + 34) * k + 14
-    if not phone:
-        H = max(H, fh + 34)
+    st, depth = stats_row(c, p["stats"], 0, sy + 30 * k, tw, k, ls_label)
+    s += st
+    H = sy + 30 * k + depth + 18
     return svg(W, H, s, f"{p['title']} — {p['line']}")
 
 
 def row(c, r, F, phone):
+    """Index, writing and experience rows; dates print plain, statuses get a box."""
     W = 600 if phone else 900
     thumb = "fig" in r and not phone
+    boxed = r.get("boxed", True)
     k = 1.45 if phone else 1
-    s = path(mono, r["no"], 11 * k, 0, 40 * k, c["muted"], tracking=1.3)[0]
-    x = 52 * k
+    s = path(mono, r["no"], 18 if phone else 12, 0, 40 * k, c["muted"], tracking=1.3)[0]
+    x = 64 * k
     if thumb:
-        f, _ = figure(r["fig"], c, F, 52, 12, 128)
+        f, _ = figure(r["fig"], c, F, 64, 12, 128)
         s += f
-        x = 212
+        x = 220
     s += path(sans, r["title"], 24 * k, x, 40 * k, c["ink"], tracking=-0.7 * k)[0]
     if phone:
-        s += path(mono, r["meta"], 10.5 * 1.3, x, 40 * k + 32, c["muted"], tracking=1.2)[0]
-        s += tag(x, 40 * k + 72, r["tag"], c, 10.5 * 1.3)[0]
-        H = 40 * k + 96
+        lines = [r["meta"]]
+        if not boxed:
+            joined = f'{r["meta"]} · {r["tag"]}'
+            lines = [joined] if mono.run(joined, 17, 1.2)[1] <= W - x else [r["meta"], r["tag"]]
+        for j, line in enumerate(lines):
+            s += path(mono, line, 17, x, 40 * k + 34 + j * 26, c["muted"], tracking=1.2)[0]
+        if boxed:
+            s += tag(x, 40 * k + 76, r["tag"], c, 15)[0]
+            H = 40 * k + 100
+        else:
+            H = 40 * k + 32 + 26 * len(lines)
     else:
         s += path(mono, r["meta"], 12, x, 70, c["muted"], tracking=1.3)[0]
-        s += tag(W, 40, r["tag"], c, 11.5, anchor="end")[0]
+        if boxed:
+            s += tag(W, 40, r["tag"], c, 11.5, anchor="end")[0]
+        else:
+            s += path(mono, r["tag"], 12, W, 40, c["muted"], tracking=1.3, anchor="end")[0]
         H = 106 if thumb else 94
     s += f'<path d="M0 {H - 0.5:.1f}H{W}" stroke="{c["rule"]}"/>'
     return svg(W, H, s, r["alt"])
@@ -286,16 +306,18 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for theme, c in THEMES.items():
         F = figures(mono, c)
+        F_phone = figures(mono, c, min_label=18)
+        F_thumb = figures(mono, c, labels=False)
         for phone in (False, True):
             sfx = f"{theme}-phone" if phone else theme
             for no, word, right in SECTIONS:
                 (OUT / f"h{no}-{sfx}.svg").write_text(header(c, no, word, right, phone))
             for p in PLATES:
-                (OUT / f"plate-{p['id']}-{sfx}.svg").write_text(plate(c, p, F, phone))
-            for items in (INDEX, WRITING, EXPERIENCE):
+                (OUT / f"plate-{p['id']}-{sfx}.svg").write_text(plate(c, p, F_phone if phone else F, phone))
+            for sec_no, items in (("02", INDEX), ("03", WRITING), ("04", EXPERIENCE)):
                 for i, r in enumerate(items, 1):
-                    r.setdefault("no", f"/{i:02d}")
-                    (OUT / f"row-{r['id']}-{sfx}.svg").write_text(row(c, r, F, phone))
+                    r.setdefault("no", f"{sec_no}.{i}")
+                    (OUT / f"row-{r['id']}-{sfx}.svg").write_text(row(c, r, F_thumb, phone))
     readme = ROOT / "README.md"
     src = readme.read_text()
     new = re.sub(r"(<!-- body:start -->\n).*?(<!-- body:end -->)", lambda m: m.group(1) + readme_body() + "\n" + m.group(2), src, flags=re.S)

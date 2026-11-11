@@ -6,18 +6,29 @@ they render inside <img>. Labels that the code does not back up were
 dropped or reworded (see each figure's comment).
 """
 
+import re
 
 
-def figures(mono, c):
-    """Return {name: svg body} for theme colours `c` using outlined font `mono`."""
+def figures(mono, c, labels=True, min_label=0):
+    """Return {name: svg body} for theme colours `c` using outlined font `mono`.
+
+    labels=False draws thumbnails: no text, heavier strokes. min_label raises
+    small labels for the phone plates, which GitHub shows at about half size.
+    """
     INK, ACC = c["ink"], c["accent"]
 
     def txt(x, y, s, fill=None, size=13, o=1, anchor="start"):
+        if not labels:
+            return ""
+        size = max(size, min_label)
         d, w = mono.run(s, size, tracking=1)
         if anchor == "middle":
             x -= w / 2
-        op = f' fill-opacity="{o}"' if o != 1 else ""
-        return f'<path transform="translate({x:.1f} {y})" fill="{fill or INK}"{op} d="{d}"/>'
+        # Dimmed labels use the theme's muted colour, not ink at low opacity,
+        # so they keep their contrast on the figure ground.
+        if fill is None:
+            fill = INK if o == 1 else c["muted"]
+        return f'<path transform="translate({x:.1f} {y})" fill="{fill}" d="{d}"/>'
 
     guide = f'stroke="{INK}" stroke-opacity="0.25" stroke-dasharray="2 5"'
 
@@ -25,14 +36,14 @@ def figures(mono, c):
 
     F["room"] = f"""
     <g stroke="{INK}" stroke-width="1.5">
-      <path d="M60 80 H300 Q340 80 360 130 L380 180"/>
+      <path d="M60 80 H300 Q340 80 360 140 L380 200"/>
       <path d="M60 200 H340 L380 200"/>
-      <path d="M60 320 H300 Q340 320 360 270 L380 220"/>
+      <path d="M60 320 H300 Q340 320 360 260 L380 200"/>
       <path d="M380 200 H580" stroke-width="3"/>
     </g>
     {txt(60, 66, 'GPT')}{txt(60, 186, 'CLAUDE')}{txt(60, 306, 'GEMINI')}{txt(420, 186, 'PROJECT MEMORY')}
     <g fill="{ACC}"><circle cx="60" cy="80" r="4"/><circle cx="60" cy="200" r="4"/><circle cx="60" cy="320" r="4"/><circle cx="580" cy="200" r="5"/></g>
-    <g {guide}><path d="M60 120 H280"/><path d="M60 240 H280"/><path d="M60 280 H280"/></g>"""
+    <g {guide}><path d="M380 60 V340"/><path d="M580 60 V340"/></g>"""
 
     # Signal: the site's "65 METRICS/CO" and "10-STEP RAG" are not backed by
     # the repo; this keeps only what the code shows.
@@ -87,10 +98,10 @@ def figures(mono, c):
       <path d="M60 190 H230 L290 130 H400 L460 190 H510"/>
       <path d="M60 270 H580" stroke-opacity="0.3"/>
     </g>
-    <path d="M510 190 L580 250" stroke="{ACC}" stroke-width="2"/>
+    <path d="M510 190 L580 270" stroke="{ACC}" stroke-width="2"/>
     {txt(60, 116, 'REQUEST A')}{txt(60, 176, 'REQUEST B')}{txt(60, 256, 'CONTRACT', o=0.4)}{txt(470, 286, 'VIOLATION', fill=ACC)}
-    {txt(236, 330, 'PROXY REORDERS COMMANDS', size=10, o=0.55)}
-    <circle cx="580" cy="250" r="5" fill="{ACC}"/>
+    {txt(200, 330, 'DELAY-ONLY PROXY SETS ORDER', size=10, o=0.55)}
+    <circle cx="580" cy="270" r="5" fill="{ACC}"/>
     <g {guide}><path d="M230 90 V310"/><path d="M400 90 V310"/></g>"""
 
     F["arc"] = f"""
@@ -112,24 +123,24 @@ def figures(mono, c):
 
     F["gemma"] = f"""
     <g stroke="{INK}" stroke-width="1.5">
-      <rect x="48" y="166" width="124" height="68"/>
-      <path d="M172 200 H226"/>
+      <rect x="36" y="166" width="164" height="68"/>
+      <path d="M200 200 H256"/>
       <circle cx="320" cy="200" r="64"/>
       <path d="M384 200 H454"/>
       <rect x="454" y="178" width="92" height="44"/>
     </g>
-    {txt(60, 192, 'REPO@COMMIT', size=11)}{txt(60, 212, '+ ISSUE', size=11, o=0.55)}
+    {txt(48, 192, 'REPO@COMMIT', size=11)}{txt(48, 214, '+ ISSUE', size=11, o=0.55)}
     {txt(320, 196, 'AGENT', anchor='middle')}{txt(320, 216, 'GEMMA 4', size=10, o=0.55, anchor='middle')}
     {txt(466, 204, 'PATCH', size=12)}
     {txt(480, 246, 'submit_patch', size=11, fill=ACC)}
     <g stroke="{INK}" stroke-width="1.5">
-      <path d="M268 158 A66 66 0 0 1 372 158"/><path d="M372 242 A66 66 0 0 1 268 242"/>
+      <path d="M262 140 A82 82 0 0 1 378 140"/><path d="M378 260 A82 82 0 0 1 262 260"/>
     </g>
-    <path d="M369 155 l6 -8 M369 155 l10 1 M271 245 l-6 8 M271 245 l-10 -1" stroke="{INK}" stroke-width="1.5"/>
+    <path d="M378 140 l-2 -9 M378 140 l-9 -2 M262 260 l2 9 M262 260 l9 2" stroke="{INK}" stroke-width="1.5"/>
     {txt(320, 96, 'PLAN → ACT → OBSERVE', size=10, o=0.55, anchor='middle')}
-    <rect x="236" y="320" width="168" height="30" stroke="{INK}" stroke-opacity="0.45" stroke-width="1.5"/>
-    {txt(320, 339, 'TOOL-CALL BUDGET', size=10, o=0.55, anchor='middle')}
-    <path d="M320 264 V320" stroke="{INK}" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="5 5"/>
+    <rect x="210" y="316" width="220" height="36" stroke="{INK}" stroke-opacity="0.45" stroke-width="1.5"/>
+    {txt(320, 340, 'TOOL-CALL BUDGET', size=10, o=0.55, anchor='middle')}
+    <path d="M320 282 V316" stroke="{INK}" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="5 5"/>
     <circle cx="546" cy="200" r="4" fill="{ACC}"/>"""
 
     # Quant Risk Desk: a return series against its VaR line, the breaches marked.
@@ -144,4 +155,8 @@ def figures(mono, c):
     {txt(60, 340, 'VAR · CVAR · DRAWDOWN · 11 SECTORS', size=11)}
     <path d="M60 354 H580" {guide}/>"""
 
+    if not labels:
+        # Thumbnails are drawn at a fifth of full size: thicken every stroke.
+        F = {k: f'<g stroke-width="3.75">{re.sub(r'stroke-width="([0-9.]+)"', lambda m: f'stroke-width="{float(m.group(1)) * 2.5:g}"', v)}</g>'
+             for k, v in F.items()}
     return F

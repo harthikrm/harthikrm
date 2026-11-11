@@ -41,11 +41,11 @@ Decisions and constraints are proposed from the conversation, only the ones you 
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/plate-mylonite-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/plate-mylonite-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/plate-mylonite-dark.svg">
-  <img src="assets/body/plate-mylonite-light.svg" width="100%" alt="Mylonite — Finds races that happen through Redis or Valkey state by controlling the order commands reach the store.">
+  <img src="assets/body/plate-mylonite-light.svg" width="100%" alt="Mylonite — Finds races through Redis or Valkey state by controlling the order commands reach the store.">
 </picture>
 </a>
 
-A delay-only proxy controls the order commands reach the store, Meta's Muse Spark proposes which requests to race, and plain code decides what counts as a bug; every report must replay 20 times out of 20. In a pre-registered evaluation on two held-out bugs, the model with the service's source needed a median of **1** execution for each, against **764** and **97** for the strongest non-AI baseline. Without the source it was no better than search, and it lost on wall-clock time and dollars, because executions are cheap. The paper reports all of it.
+A delay-only proxy controls the order commands reach the store, Meta's Muse Spark proposes which requests to race, and plain code decides what counts as a bug; every report must replay 20 times out of 20. In a pre-registered evaluation on two held-out bugs, the model with the service's source needed a median of **1** execution for each, against **764** and **97** for the strongest non-AI baseline. Even with the source it was slower and more expensive than systematic search (median 41.8 s and 59.9 s against 1.0–6.5 s), because one execution costs about 9 ms. Without the source it was not better than the conventional baselines on any metric. The paper reports all of it.
 
 <samp>Python · Valkey · RESP · Docker&ensp;→&ensp;<a href="https://github.com/harthikrm/mylonite">source</a> · <a href="https://www.harthik.dev/papers/mylonite_fewer_executions_more_seconds.pdf">paper</a></samp>
 
@@ -60,7 +60,7 @@ A delay-only proxy controls the order commands reach the store, Meta's Muse Spar
 </picture>
 </a>
 
-The competition ships an agent as configuration only, run by a fixed harness on one quantized 31B Gemma 4 model. As shipped, the public dev environment could grade just 16 of 129 tasks with their own reference patches; three environment fixes raised that to 92. A BM25 index put a gold file in the top five for 70% of tasks, while the harness's embedding search resolved 2 of 129. With everything else fixed, the per-task tool-call budget, not the prompt, moved the public leaderboard.
+Entrants ship an agent as configuration only, which the competition's fixed harness runs on one quantized 31B Gemma 4 model. As shipped, the public dev environment could grade just 16 of 129 tasks with their own reference patches; three environment fixes raised that to 92. A BM25 index put a gold file in the top five for 70% of tasks, while the harness's embedding search returned any result on only 2 of 129, because queries had to match a fully qualified name exactly. With everything else fixed, the per-task tool-call budget, not the prompt, moved the public leaderboard.
 
 <samp>Gemma 4 · vLLM · SWE-bench-style tasks · BM25&ensp;→&ensp;<a href="https://www.harthik.dev/papers/measure_the_harness_first.pdf">paper</a></samp>
 
