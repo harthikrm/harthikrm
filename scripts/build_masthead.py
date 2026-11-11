@@ -2,42 +2,48 @@
 
 Type is converted to outlines so the masthead renders identically
 everywhere: GitHub serves README images through <img>, which cannot load
-web fonts. Fonts (OFL, from github.com/google/fonts) are read from the
-directory given as the first argument:
+web fonts. The variable fonts (OFL, from github.com/google/fonts, under
+ofl/geist and ofl/geistmono) are read from the directory given as the
+first argument:
 
-    InstrumentSerif-Regular.ttf, IBMPlexMono-Regular.ttf
+    Geist[wght].ttf, GeistMono[wght].ttf
 
     pip install fonttools uharfbuzz
     python scripts/build_masthead.py ~/fonts
 """
 
 import sys
+from io import BytesIO
 from pathlib import Path
 
 import uharfbuzz as hb
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.ttLib import TTFont
+from fontTools.varLib.instancer import instantiateVariableFont
 
 FONTS = Path(sys.argv[1]).expanduser()
 OUT = Path(__file__).resolve().parent.parent / "assets"
 
-W, H = 900, 228
+W, H = 900, 160
 
 THEMES = {
-    # GitHub's own foreground tokens, so the type sits in the page.
-    "light": {"ink": "#1f2328", "muted": "#59636e", "accent": "#2b45ff"},
-    "dark": {"ink": "#f0f6fc", "muted": "#9198a1", "accent": "#7c8cff"},
+    # GitHub's own foreground and border tokens, so the type sits in the page.
+    "light": {"ink": "#1f2328", "muted": "#59636e", "rule": "#d1d9e0", "accent": "#2b45ff"},
+    "dark": {"ink": "#f0f6fc", "muted": "#9198a1", "rule": "#3d444d", "accent": "#7c8cff"},
 }
 
 
 class Face:
-    def __init__(self, filename):
-        path = FONTS / filename
-        self.tt = TTFont(path)
+    def __init__(self, filename, weight):
+        tt = TTFont(FONTS / filename)
+        instantiateVariableFont(tt, {"wght": weight}, inplace=True)
+        buf = BytesIO()
+        tt.save(buf)
+        self.tt = TTFont(BytesIO(buf.getvalue()))
         self.glyphs = self.tt.getGlyphSet()
         self.upem = self.tt["head"].unitsPerEm
-        self.hb = hb.Font(hb.Face(hb.Blob(path.read_bytes())))
+        self.hb = hb.Font(hb.Face(hb.Blob(buf.getvalue())))
 
     def run(self, text, size, tracking=0.0):
         """Shaped outline for `text`; returns (path data, advance width)."""
@@ -57,40 +63,25 @@ class Face:
         return pen.getCommands(), x - tracking
 
 
-serif = Face("InstrumentSerif-Regular.ttf")
-mono = Face("IBMPlexMono-Regular.ttf")
+sans = Face("Geist[wght].ttf", 600)
+mono = Face("GeistMono[wght].ttf", 400)
 
-name_d, name_w = serif.run("Harthik Mallichetty", 100, tracking=-0.8)
-role_d, _ = mono.run("DATA & AI ENGINEER", 21, tracking=3)
-city_d, city_w = mono.run("DALLAS, TEXAS", 21, tracking=3)
-
-# The rule: three strands converge into one line that runs to the edge.
-# It is the shape of the work — several sources, one system.
-RULE_Y = 190
-strands = [
-    f"M1 {RULE_Y - 22} H96 C150 {RULE_Y - 22} 168 {RULE_Y} 214 {RULE_Y}",
-    f"M1 {RULE_Y} H214",
-    f"M1 {RULE_Y + 22} H96 C150 {RULE_Y + 22} 168 {RULE_Y} 214 {RULE_Y}",
-]
-main = f"M214 {RULE_Y} H{W - 14}"
+role_d, _ = mono.run("DATA & AI ENGINEER", 17, tracking=2.4)
+city_d, city_w = mono.run("DALLAS, TX", 17, tracking=2.4)
+name_d, name_w = sans.run("Harthik Mallichetty", 82, tracking=-3.2)
+stop_d, _ = sans.run(".", 82)
 
 
 def render(theme):
     c = THEMES[theme]
-    # Deliberately static: browsers pause animation in <img> SVGs (hidden
-    # tabs, Safari), and a paused draw-on would leave the rule invisible.
-    strand_paths = "".join(f'<path d="{d}"/>' for d in strands)
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Harthik Mallichetty — Data and AI engineer, Dallas, Texas">
 <g fill="{c['muted']}">
-<path transform="translate(2 36)" d="{role_d}"/>
-<path transform="translate({W - 2 - city_w:.1f} 36)" d="{city_d}"/>
+<path transform="translate(2 28)" d="{role_d}"/>
+<path transform="translate({W - 2 - city_w:.1f} 28)" d="{city_d}"/>
 </g>
-<path fill="{c['ink']}" transform="translate(0 134)" d="{name_d}"/>
-<g fill="none" stroke="{c['ink']}" stroke-linecap="round">
-<g stroke-width="1.5" stroke-opacity=".55">{strand_paths}</g>
-<path stroke-width="2.5" d="{main}"/>
-</g>
-<circle cx="{W - 8}" cy="{RULE_Y}" r="5.5" fill="{c['accent']}"/>
+<path fill="{c['ink']}" transform="translate(-2 114)" d="{name_d}"/>
+<path fill="{c['accent']}" transform="translate({name_w - 1:.1f} 114)" d="{stop_d}"/>
+<path d="M1 150.5H{W - 1}" stroke="{c['rule']}" stroke-width="1.5"/>
 </svg>
 """
 
