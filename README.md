@@ -1,6 +1,7 @@
 <picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/masthead-dark-phone.svg">
+  <source media="(max-width: 600px)" srcset="assets/masthead-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/masthead-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/masthead-light.svg">
   <img src="assets/masthead-light.svg" width="100%" alt="Harthik Mallichetty — Data and AI engineer, Dallas, Texas. Building Room.">
 </picture>
 
@@ -110,6 +111,8 @@ The competition ships an agent as configuration only, run by a fixed harness on 
 </picture>
 </a>
 
+<br>
+
 <a href="https://www.harthik.dev">
 <picture>
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/h03-dark-phone.svg">
@@ -136,6 +139,8 @@ The competition ships an agent as configuration only, run by a fixed harness on 
   <img src="assets/body/row-arc-essay-light.svg" width="100%" alt="From code review to ARC-AGI-2: reusing the same ML muscle on a harder reasoning problem. Medium, October 2026.">
 </picture>
 </a>
+
+<br>
 
 <a href="https://www.harthik.dev">
 <picture>

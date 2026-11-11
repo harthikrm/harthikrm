@@ -1,4 +1,4 @@
-"""Generate assets/masthead-{light,dark}.svg.
+"""Generate assets/masthead-{light,dark}[-phone].svg.
 
 Type is converted to outlines so the masthead renders identically
 everywhere: GitHub serves README images through <img>, which cannot load
@@ -65,7 +65,33 @@ def render(theme):
 """
 
 
+# Phone layout: the name stacks so it can stay large at 375px wide.
+PW, PH = 600, 330
+first_d, _ = sans.run("Harthik", 112, tracking=-4.4)
+last_d, last_w = sans.run("Mallichetty", 112, tracking=-4.4)
+p_labels = [mono.run(t, 24, tracking=2.6) for t in LABELS]
+
+
+def render_phone(theme):
+    c = THEMES[theme]
+    (d0, w0), (d1, w1), (d2, _) = p_labels
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {PW} {PH}" width="{PW}" height="{PH}" role="img" aria-label="Harthik Mallichetty — Data and AI engineer, Dallas, Texas. Building Room.">
+<defs>
+<linearGradient id="name" x1="0" y1="20" x2="{last_w:.0f}" y2="220" gradientUnits="userSpaceOnUse">
+<stop offset=".3" stop-color="{c['ink']}"/><stop offset=".78" stop-color="{c['accent']}"/><stop offset="1" stop-color="{c['violet']}"/>
+</linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="{c['accent']}" stop-opacity="{c['glow']}"/><stop offset="1" stop-color="{c['accent']}" stop-opacity="0"/></radialGradient>
+</defs>
+<ellipse cx="420" cy="170" rx="220" ry="110" fill="url(#glow)"/>
+<g fill="url(#name)"><path transform="translate(-3 100)" d="{first_d}"/><path transform="translate(-3 210)" d="{last_d}"/></g>
+<g fill="{c['muted']}"><path transform="translate(2 272)" d="{d0}"/><path transform="translate({2 + w0 + 34:.1f} 272)" d="{d1}"/><path transform="translate(2 312)" d="{d2}"/></g>
+<circle cx="{2 + w0 + 17:.1f}" cy="263" r="3" fill="{c['accent']}"/>
+</svg>
+"""
+
+
 OUT.mkdir(exist_ok=True)
 for theme in THEMES:
     (OUT / f"masthead-{theme}.svg").write_text(render(theme))
-print(f"name width {name_w:.0f}px of {W}")
+    (OUT / f"masthead-{theme}-phone.svg").write_text(render_phone(theme))
+print(f"name width {name_w:.0f}px of {W}; phone {last_w:.0f}px of {PW}")

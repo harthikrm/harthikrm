@@ -178,8 +178,9 @@ def stats_row(c, stats, x0, y, width, k):
     for i, (v, label) in enumerate(stats):
         x = x0 + i * col
         s += path(sans, v, 26 * k, x, y, c["ink"], tracking=-0.6)[0]
-        for j, line in enumerate(wrap(mono, label, 9.5 * k, col - 18, tracking=1.1)):
-            s += path(mono, line, 9.5 * k, x, y + (22 + j * 14) * k, c["muted"], tracking=1.1)[0]
+        ls = 10.5 * min(k, 1.3)
+        for j, line in enumerate(wrap(mono, label, ls, col - 16, tracking=1.0)):
+            s += path(mono, line, ls, x, y + 22 * k + j * ls * 1.45, c["muted"], tracking=1.0)[0]
     return s
 
 
@@ -214,7 +215,9 @@ def plate(c, p, F, phone):
     sy = max(y + 20, 0 if phone else 248)
     s += f'<path d="M0 {sy + 0.5:.1f}H{tw}" stroke="{c["rule"]}"/>'
     s += stats_row(c, p["stats"], 0, sy + 30 * k, tw, k)
-    H = max(sy + (30 + 22 + 30) * k + 14, fh + 34) if not phone else sy + (30 + 22 + 30) * k + 14
+    H = sy + (30 + 22 + 34) * k + 14
+    if not phone:
+        H = max(H, fh + 34)
     return svg(W, H, s, f"{p['title']} — {p['line']}")
 
 
@@ -222,8 +225,7 @@ def row(c, r, F, phone):
     W = 600 if phone else 900
     thumb = "fig" in r and not phone
     k = 1.45 if phone else 1
-    s = f'<path d="M0 0.5H{W}" stroke="{c["rule"]}"/>'
-    s += path(mono, r["no"], 11 * k, 0, 40 * k, c["muted"], tracking=1.3)[0]
+    s = path(mono, r["no"], 11 * k, 0, 40 * k, c["muted"], tracking=1.3)[0]
     x = 52 * k
     if thumb:
         f, _ = figure(r["fig"], c, F, 52, 12, 128)
@@ -235,9 +237,10 @@ def row(c, r, F, phone):
         s += tag(x, 40 * k + 72, r["tag"], c, 10.5 * 1.3)[0]
         H = 40 * k + 96
     else:
-        s += path(mono, r["meta"], 10.5, x, 68, c["muted"], tracking=1.3)[0]
-        s += tag(W, 40, r["tag"], c, 10.5, anchor="end")[0]
-        H = 104 if thumb else 92
+        s += path(mono, r["meta"], 12, x, 70, c["muted"], tracking=1.3)[0]
+        s += tag(W, 40, r["tag"], c, 11.5, anchor="end")[0]
+        H = 106 if thumb else 94
+    s += f'<path d="M0 {H - 0.5:.1f}H{W}" stroke="{c["rule"]}"/>'
     return svg(W, H, s, r["alt"])
 
 
@@ -265,11 +268,14 @@ def readme_body():
         out.append(picture(f"h{no}", f"{no} — {word}", f"{SITE}"))
 
     section_header()
-    for p in PLATES:
+    for i, p in enumerate(PLATES):
+        if i:
+            out.append("<br>")
         out.append(picture(f"plate-{p['id']}", f"{p['title']} — {p['line']}", p["href"]))
         links = " · ".join(f'<a href="{u}">{t}</a>' for t, u in p["links"])
-        out.append(f"{p['body']}\n\n<samp>{p['stack']}&ensp;→&ensp;{links}</samp>\n\n<br>")
+        out.append(f"{p['body']}\n\n<samp>{p['stack']}&ensp;→&ensp;{links}</samp>")
     for items in (INDEX, WRITING, EXPERIENCE):
+        out.append("<br>")
         section_header()
         out.extend(picture(f"row-{r['id']}", r["alt"], r["href"]) for r in items)
     out.append(f'<samp><sub><a href="{SITE}/Harthik_Mallichetty_Resume.pdf">Résumé (PDF)</a>&ensp;·&ensp;Also: McKinsey.org Forward Program · Anthropic Claude 101 and AI Fluency · IBM Data Analytics internship</sub></samp>')
