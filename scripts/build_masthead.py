@@ -61,8 +61,8 @@ serif = Face("InstrumentSerif-Regular.ttf")
 mono = Face("IBMPlexMono-Regular.ttf")
 
 name_d, name_w = serif.run("Harthik Mallichetty", 100, tracking=-0.8)
-role_d, _ = mono.run("DATA & AI ENGINEER", 15, tracking=2.2)
-city_d, city_w = mono.run("DALLAS, TEXAS", 15, tracking=2.2)
+role_d, _ = mono.run("DATA & AI ENGINEER", 21, tracking=3)
+city_d, city_w = mono.run("DALLAS, TEXAS", 21, tracking=3)
 
 # The rule: three strands converge into one line that runs to the edge.
 # It is the shape of the work — several sources, one system.
@@ -82,10 +82,10 @@ def render(theme):
     strand_paths = "".join(f'<path d="{d}"/>' for d in strands)
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Harthik Mallichetty — Data and AI engineer, Dallas, Texas">
 <g fill="{c['muted']}">
-<path transform="translate(2 34)" d="{role_d}"/>
-<path transform="translate({W - 2 - city_w:.1f} 34)" d="{city_d}"/>
+<path transform="translate(2 36)" d="{role_d}"/>
+<path transform="translate({W - 2 - city_w:.1f} 36)" d="{city_d}"/>
 </g>
-<path fill="{c['ink']}" transform="translate(-3 134)" d="{name_d}"/>
+<path fill="{c['ink']}" transform="translate(0 134)" d="{name_d}"/>
 <g fill="none" stroke="{c['ink']}" stroke-linecap="round">
 <g stroke-width="1.5" stroke-opacity=".55">{strand_paths}</g>
 <path stroke-width="2.5" d="{main}"/>
