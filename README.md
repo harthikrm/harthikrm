@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/masthead-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/masthead-light.svg">
-  <img src="assets/masthead-light.svg" width="100%" alt="Harthik Mallichetty — Data and AI engineer, Dallas, Texas">
+  <img src="assets/masthead-light.svg" width="100%" alt="Harthik Mallichetty — Data and AI engineer, Dallas, Texas. Building Room.">
 </picture>
 
 I build AI systems end to end, from ingestion jobs and warehouses to evaluations and the product people actually use. Right now I'm building [Room](https://joinaroom.app).
