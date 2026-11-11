@@ -246,12 +246,14 @@ def row(c, r, F, phone):
 
 def picture(name, alt, href, width="100%"):
     a = f"assets/body/{name}"
-    return (f'<a href="{href}"><picture>\n'
+    # The <p> makes this an HTML block; a bare <a> starts a paragraph and
+    # GitHub then pulls the <source> elements out of the <picture>.
+    return (f'<p><a href="{href}"><picture>\n'
             f'  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="{a}-dark-phone.svg">\n'
             f'  <source media="(max-width: 600px)" srcset="{a}-light-phone.svg">\n'
             f'  <source media="(prefers-color-scheme: dark)" srcset="{a}-dark.svg">\n'
             f'  <img src="{a}-light.svg" width="{width}" alt="{escape(alt)}">\n'
-            f"</picture></a>")
+            f"</picture></a></p>")
 
 
 def readme_body():
