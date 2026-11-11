@@ -1,7 +1,8 @@
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/masthead-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/masthead-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/masthead-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/masthead-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/masthead-light.svg">
   <img src="assets/masthead-light.svg" width="100%" alt="Harthik Mallichetty — Data and AI engineer, Dallas, Texas. Building Room.">
 </picture>
 
@@ -14,18 +15,20 @@ I build AI systems end to end, from ingestion jobs and warehouses to evaluations
 <!-- body:start -->
 <a href="https://www.harthik.dev">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/h01-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/h01-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/h01-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/h01-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/h01-light.svg">
   <img src="assets/body/h01-light.svg" width="100%" alt="01 — Selected work">
 </picture>
 </a>
 
 <a href="https://joinaroom.app">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/plate-room-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/plate-room-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/plate-room-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/plate-room-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/plate-room-light.svg">
   <img src="assets/body/plate-room-light.svg" width="100%" alt="Room — GPT, Claude and Gemini answer side by side, each briefed from one confirmed project memory.">
 </picture>
 </a>
@@ -38,9 +41,10 @@ Decisions and constraints are proposed from the conversation, only the ones you 
 
 <a href="https://github.com/harthikrm/mylonite">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/plate-mylonite-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/plate-mylonite-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/plate-mylonite-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/plate-mylonite-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/plate-mylonite-light.svg">
   <img src="assets/body/plate-mylonite-light.svg" width="100%" alt="Mylonite — Finds races through Redis or Valkey state by controlling the order commands reach the store.">
 </picture>
 </a>
@@ -53,9 +57,10 @@ A delay-only proxy controls the order commands reach the store, Meta's Muse Spar
 
 <a href="https://www.harthik.dev/papers/measure_the_harness_first.pdf">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/plate-harness-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/plate-harness-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/plate-harness-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/plate-harness-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/plate-harness-light.svg">
   <img src="assets/body/plate-harness-light.svg" width="100%" alt="Measure the Harness First — What can be learned about a configuration-only Gemma 4 coding agent before tuning it.">
 </picture>
 </a>
@@ -68,45 +73,50 @@ Entrants ship an agent as configuration only, which the competition's fixed harn
 
 <a href="https://www.harthik.dev">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/h02-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/h02-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/h02-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/h02-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/h02-light.svg">
   <img src="assets/body/h02-light.svg" width="100%" alt="02 — Index">
 </picture>
 </a>
 
 <a href="https://github.com/harthikrm/signal">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-signal-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-signal-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-signal-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-signal-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-signal-light.svg">
   <img src="assets/body/row-signal-light.svg" width="100%" alt="Signal: ask about a company and get an answer cited to its filings, built on Airflow, dbt, pgvector and LangGraph.">
 </picture>
 </a>
 
 <a href="https://github.com/harthikrm/arc-prize-2026-paper">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-arc-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-arc-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-arc-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-arc-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-arc-light.svg">
   <img src="assets/body/row-arc-light.svg" width="100%" alt="Let the Solver Choose Its Data: ARC Prize 2026 paper on selecting synthetic tasks by the NVARC solver&#x27;s own likelihood.">
 </picture>
 </a>
 
 <a href="https://github.com/harthikrm/code-sentinel">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-sentinel-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-sentinel-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-sentinel-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-sentinel-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-sentinel-light.svg">
   <img src="assets/body/row-sentinel-light.svg" width="100%" alt="Code Sentinel: QLoRA fine-tune of Mistral-7B-Instruct on 143K code-review pairs, with a GitHub Actions review bot.">
 </picture>
 </a>
 
 <a href="https://github.com/harthikrm/quant-risk-desk">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-quant-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-quant-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-quant-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-quant-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-quant-light.svg">
   <img src="assets/body/row-quant-light.svg" width="100%" alt="Quant Risk Desk: Airflow ingest into Postgres with dbt models computing VaR, CVaR and drawdowns across 11 sectors.">
 </picture>
 </a>
@@ -115,27 +125,30 @@ Entrants ship an agent as configuration only, which the competition's fixed harn
 
 <a href="https://www.harthik.dev">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/h03-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/h03-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/h03-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/h03-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/h03-light.svg">
   <img src="assets/body/h03-light.svg" width="100%" alt="03 — Writing">
 </picture>
 </a>
 
 <a href="https://medium.com/@hrmallichetty/when-feedback-backfires-can-better-feedback-teach-ai-agents-to-game-the-system-5a03d05d9262">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-feedback-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-feedback-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-feedback-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-feedback-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-feedback-light.svg">
   <img src="assets/body/row-feedback-light.svg" width="100%" alt="When feedback backfires: can better feedback teach AI agents to game their graders? Medium, September 2026.">
 </picture>
 </a>
 
 <a href="https://medium.com/@hrmallichetty/from-code-review-to-arc-agi-2-reusing-the-same-ml-muscle-on-a-harder-reasoning-problem-a4be66501d3b">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-arc-essay-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-arc-essay-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-arc-essay-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-arc-essay-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-arc-essay-light.svg">
   <img src="assets/body/row-arc-essay-light.svg" width="100%" alt="From code review to ARC-AGI-2: reusing the same ML muscle on a harder reasoning problem. Medium, October 2026.">
 </picture>
 </a>
@@ -144,45 +157,50 @@ Entrants ship an agent as configuration only, which the competition's fixed harn
 
 <a href="https://www.harthik.dev">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/h04-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/h04-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/h04-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/h04-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/h04-light.svg">
   <img src="assets/body/h04-light.svg" width="100%" alt="04 — Experience">
 </picture>
 </a>
 
 <a href="https://www.harthik.dev/#experience">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-prolifics-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-prolifics-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-prolifics-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-prolifics-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-prolifics-light.svg">
   <img src="assets/body/row-prolifics-light.svg" width="100%" alt="Prolifics, associate data engineer (joined as an intern), 2023 to 2024.">
 </picture>
 </a>
 
 <a href="https://www.harthik.dev/#experience">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-heidigi-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-heidigi-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-heidigi-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-heidigi-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-heidigi-light.svg">
   <img src="assets/body/row-heidigi-light.svg" width="100%" alt="HeiDigi, data analyst intern, 2022.">
 </picture>
 </a>
 
 <a href="https://www.harthik.dev/#experience">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-utd-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-utd-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-utd-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-utd-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-utd-light.svg">
   <img src="assets/body/row-utd-light.svg" width="100%" alt="University of Texas at Dallas, MS in Business Analytics and Artificial Intelligence, Scholar With Distinction, 2026.">
 </picture>
 </a>
 
 <a href="https://www.harthik.dev/#experience">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/body/row-gitam-dark-phone.svg">
+  <source media="(max-width: 600px) and (prefers-color-scheme:dark)" srcset="assets/body/row-gitam-dark-phone.svg">
   <source media="(max-width: 600px)" srcset="assets/body/row-gitam-light-phone.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/body/row-gitam-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/body/row-gitam-light.svg">
   <img src="assets/body/row-gitam-light.svg" width="100%" alt="GITAM University, B.Tech in Computer Science and Business Systems, 2024.">
 </picture>
 </a>
