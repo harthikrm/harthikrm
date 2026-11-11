@@ -12,27 +12,27 @@ I build AI systems that hold up outside the notebook — the data pipelines unde
 
 ### <samp>01</samp>&ensp;Room
 
-<samp><sub>FOUNDER&ensp;·&ensp;2026 —&ensp;·&ensp;PRIVATE EARLY ACCESS</sub></samp>
+<samp><sub>FOUNDER&ensp;·&ensp;SINCE 2026&ensp;·&ensp;PRIVATE EARLY ACCESS</sub></samp>
 
 Explain a project once, then work with whichever model you want. Room runs GPT, Claude and Gemini side by side, each answering independently from the same project memory: the decisions, constraints and open questions you have approved, linked back to the conversations they came from.
 
-<samp><sub>Next.js · TypeScript · PostgreSQL · Supabase · OpenRouter · SSE</sub></samp>&ensp;→&ensp;[joinaroom.app](https://joinaroom.app)
+<samp>Next.js · TypeScript · PostgreSQL · Supabase · OpenRouter&ensp;→&ensp;<a href="https://joinaroom.app">joinaroom.app</a></samp>
 
 ### <samp>02</samp>&ensp;Signal
 
 <samp><sub>FINANCIAL RESEARCH&ensp;·&ensp;2026&ensp;·&ensp;END TO END</sub></samp>
 
-Ask about a company; get an answer cited to its filings. Airflow pulls SEC XBRL facts, filing text and daily prices for 70 public companies. dbt models them from staging to marts, under custom tests, and filings are embedded with a finance-tuned model into pgvector. On top sit a cited RAG chat and a LangGraph agent that plans, calls six data tools, checks its own work and replans before answering. CI runs dbt and API tests against a pgvector container, then deploys to Cloud Run and Vercel.
+Ask about a company; get an answer cited to its filings. Airflow ingests SEC XBRL facts, filing text and prices for 70 public companies, dbt models them through tested staging and mart layers, and filings are embedded into pgvector with a finance-tuned model. On top: a cited RAG chat and a LangGraph agent that plans, calls six data tools, checks its work and replans. CI tests the warehouse and the API before deploying to Cloud Run and Vercel.
 
-<samp><sub>Python · Airflow · dbt · PostgreSQL · pgvector · LangGraph · FastAPI · React · GCP</sub></samp>&ensp;→&ensp;[source](https://github.com/harthikrm/signal)
+<samp>Python · Airflow · dbt · pgvector · LangGraph · FastAPI · GCP&ensp;→&ensp;<a href="https://github.com/harthikrm/signal">source</a></samp>
 
 ### <samp>03</samp>&ensp;Mylonite
 
 <samp><sub>RESEARCH&ensp;·&ensp;NOV 2026&ensp;·&ensp;PREPRINT</sub></samp>
 
-A test harness for races that happen through Redis or Valkey state rather than in memory. A delay-only proxy decides the order commands reach the store, a language model proposes which requests to race, and plain code decides what counts as a bug. A reported bug must replay 20 times out of 20 from its recorded schedule. In a pre-registered, held-out evaluation the model found each bug in a median of **1** execution, against **764** and **97** for the strongest non-AI baseline on the two held-out bugs. It still lost on wall-clock time, because executions are cheap. The paper reports both.
+A test harness for races that happen through Redis or Valkey state, not in memory. A delay-only proxy controls the order commands reach the store, a language model proposes which requests to race, and plain code decides what counts as a bug; every report must replay 20 times out of 20. In a pre-registered, held-out evaluation the model needed a median of **1** execution per bug, against **764** and **97** for the strongest non-AI baseline — and still lost on wall-clock time, because executions are cheap. The paper reports both.
 
-<samp><sub>Python · Valkey · RESP2/3 · 129 tests</sub></samp>&ensp;→&ensp;[source](https://github.com/harthikrm/mylonite)&ensp;·&ensp;[paper](https://www.harthik.dev/papers/mylonite_fewer_executions_more_seconds.pdf)
+<samp>Python · Valkey · RESP · 129 tests&ensp;→&ensp;<a href="https://github.com/harthikrm/mylonite">source</a> · <a href="https://www.harthik.dev/papers/mylonite_fewer_executions_more_seconds.pdf">paper</a></samp>
 
 <br>
 
