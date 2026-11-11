@@ -1,4 +1,4 @@
-"""Generate assets/masthead-{light,dark}.svg.
+"""Generate assets/masthead-{light,dark}[-phone].svg.
 
 Type is converted to outlines so the masthead renders identically
 everywhere: GitHub serves README images through <img>, which cannot load
@@ -13,14 +13,9 @@ first argument:
 """
 
 import sys
-from io import BytesIO
 from pathlib import Path
 
-import uharfbuzz as hb
-from fontTools.pens.svgPathPen import SVGPathPen
-from fontTools.pens.transformPen import TransformPen
-from fontTools.ttLib import TTFont
-from fontTools.varLib.instancer import instantiateVariableFont
+from outline import Face
 
 FONTS = Path(sys.argv[1]).expanduser()
 OUT = Path(__file__).resolve().parent.parent / "assets"
@@ -35,37 +30,8 @@ THEMES = {
 }
 
 
-class Face:
-    def __init__(self, filename, weight):
-        tt = TTFont(FONTS / filename)
-        instantiateVariableFont(tt, {"wght": weight}, inplace=True)
-        buf = BytesIO()
-        tt.save(buf)
-        self.tt = TTFont(BytesIO(buf.getvalue()))
-        self.glyphs = self.tt.getGlyphSet()
-        self.upem = self.tt["head"].unitsPerEm
-        self.hb = hb.Font(hb.Face(hb.Blob(buf.getvalue())))
-
-    def run(self, text, size, tracking=0.0):
-        """Shaped outline for `text`; returns (path data, advance width)."""
-        buf = hb.Buffer()
-        buf.add_str(text)
-        buf.guess_segment_properties()
-        hb.shape(self.hb, buf, {"kern": True, "liga": True})
-        scale = size / self.upem
-        order = self.tt.getGlyphOrder()
-        pen = SVGPathPen(self.glyphs, ntos=lambda v: f"{v:.1f}".rstrip("0").rstrip("."))
-        x = 0.0
-        for info, pos in zip(buf.glyph_infos, buf.glyph_positions):
-            name = order[info.codepoint]
-            t = TransformPen(pen, (scale, 0, 0, -scale, x + pos.x_offset * scale, -pos.y_offset * scale))
-            self.glyphs[name].draw(t)
-            x += pos.x_advance * scale + tracking
-        return pen.getCommands(), x - tracking
-
-
-sans = Face("Geist[wght].ttf", 600)
-mono = Face("GeistMono[wght].ttf", 400)
+sans = Face(FONTS, "Geist[wght].ttf", 600)
+mono = Face(FONTS, "GeistMono[wght].ttf", 400)
 
 name_d, name_w = sans.run("Harthik Mallichetty", 88, tracking=-3.6)
 # Mono subline, large enough to stay legible when GitHub scales the image to a phone.
@@ -99,7 +65,33 @@ def render(theme):
 """
 
 
+# Phone layout: the name stacks so it can stay large at 375px wide.
+PW, PH = 600, 330
+first_d, _ = sans.run("Harthik", 112, tracking=-4.4)
+last_d, last_w = sans.run("Mallichetty", 112, tracking=-4.4)
+p_labels = [mono.run(t, 24, tracking=2.6) for t in LABELS]
+
+
+def render_phone(theme):
+    c = THEMES[theme]
+    (d0, w0), (d1, w1), (d2, _) = p_labels
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {PW} {PH}" width="{PW}" height="{PH}" role="img" aria-label="Harthik Mallichetty — Data and AI engineer, Dallas, Texas. Building Room.">
+<defs>
+<linearGradient id="name" x1="0" y1="20" x2="{last_w:.0f}" y2="220" gradientUnits="userSpaceOnUse">
+<stop offset=".3" stop-color="{c['ink']}"/><stop offset=".78" stop-color="{c['accent']}"/><stop offset="1" stop-color="{c['violet']}"/>
+</linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="{c['accent']}" stop-opacity="{c['glow']}"/><stop offset="1" stop-color="{c['accent']}" stop-opacity="0"/></radialGradient>
+</defs>
+<ellipse cx="420" cy="170" rx="220" ry="110" fill="url(#glow)"/>
+<g fill="url(#name)"><path transform="translate(-3 100)" d="{first_d}"/><path transform="translate(-3 210)" d="{last_d}"/></g>
+<g fill="{c['muted']}"><path transform="translate(2 272)" d="{d0}"/><path transform="translate({2 + w0 + 34:.1f} 272)" d="{d1}"/><path transform="translate(2 312)" d="{d2}"/></g>
+<circle cx="{2 + w0 + 17:.1f}" cy="263" r="3" fill="{c['accent']}"/>
+</svg>
+"""
+
+
 OUT.mkdir(exist_ok=True)
 for theme in THEMES:
     (OUT / f"masthead-{theme}.svg").write_text(render(theme))
-print(f"name width {name_w:.0f}px of {W}")
+    (OUT / f"masthead-{theme}-phone.svg").write_text(render_phone(theme))
+print(f"name width {name_w:.0f}px of {W}; phone {last_w:.0f}px of {PW}")
