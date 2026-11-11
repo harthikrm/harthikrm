@@ -246,14 +246,14 @@ def row(c, r, F, phone):
 
 def picture(name, alt, href, width="100%"):
     a = f"assets/body/{name}"
-    # The <p> makes this an HTML block; a bare <a> starts a paragraph and
-    # GitHub then pulls the <source> elements out of the <picture>.
-    return (f'<p><a href="{href}"><picture>\n'
+    # <a> alone on its line opens an HTML block; inline, GitHub parses it as
+    # a paragraph and pulls the <source> elements out of the <picture>.
+    return (f'<a href="{href}">\n<picture>\n'
             f'  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="{a}-dark-phone.svg">\n'
             f'  <source media="(max-width: 600px)" srcset="{a}-light-phone.svg">\n'
             f'  <source media="(prefers-color-scheme: dark)" srcset="{a}-dark.svg">\n'
             f'  <img src="{a}-light.svg" width="{width}" alt="{escape(alt)}">\n'
-            f"</picture></a></p>")
+            f"</picture>\n</a>")
 
 
 def readme_body():
@@ -271,7 +271,7 @@ def readme_body():
         out.append(f"{p['body']}\n\n<samp>{p['stack']}&ensp;→&ensp;{links}</samp>\n\n<br>")
     for items in (INDEX, WRITING, EXPERIENCE):
         section_header()
-        out.append("\n".join(picture(f"row-{r['id']}", r["alt"], r["href"]) for r in items))
+        out.extend(picture(f"row-{r['id']}", r["alt"], r["href"]) for r in items)
     out.append(f'<samp><sub><a href="{SITE}/Harthik_Mallichetty_Resume.pdf">Résumé (PDF)</a>&ensp;·&ensp;Also: McKinsey.org Forward Program · Anthropic Claude 101 and AI Fluency · IBM Data Analytics internship</sub></samp>')
     return "\n\n".join(out)
 
